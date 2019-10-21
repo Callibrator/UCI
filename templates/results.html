@@ -1,3 +1,5 @@
+{% extends "layout.html" %}
+{% block b %}
 <h1>Ti Exoume Perasi</h3>
 
 <h2>Statistika - Perasmena</h2>
@@ -14,6 +16,11 @@
 		<tr>
 			<td>Epilogis Upoxreotika</td>
 			<td>{{data["statistika"]["ΕΥ"]}}</td>
+		</tr>
+		
+		<tr>
+			<td>Genikis Paidias (mexri 2 mporoun na metrisoun gia ptixio)</td>
+			<td>{{data["statistika"]["GP"]}}</td>
 		</tr>
 
 	</tbody>
@@ -217,6 +224,7 @@
 	</table>
 
 	<h4> Prosoxi!!! An ena mathima anikei se 2 listes kai to perasete metraei gia 1!!!</h4>
-	<h4> Prosoxi!!! Mporeite na dilosete mono 2 mathimata genikis paidias!!!!</h4>
+	<h4> Prosoxi!!! Mporeite na dilosete mono 2 mathimata genikis paidias sinolika (menoun: {{2 - data["statistika"]["GP"]}} )!!!!</h4>
 {% endfor %}
 
+{% endblock %}

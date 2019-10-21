@@ -4,7 +4,7 @@
 #I wont write a single comment!
 import os
 
-delimiter = "~"
+
 
 needed_total = 55 #Sinolo
 needed_y = 39 #Upoxreotika
@@ -12,11 +12,12 @@ needed_br = 4 #Vasika Rois
 needed_eu_r = 5 #upoxreotika mathimata epilogis idias rois pou eisai
 needed_eu = 7 #eleu8era ma8imata epilogis tis idias rois h kapoias allis
 
+ptixiaki = False
+
 
 max_gp = 2 #megista genikis paidias
 
-def read_csv(filepath):
-	global delimiter
+def read_csv(filepath,delimiter="~"):
 	
 	if not os.path.isfile(filepath):
 		print("[-] File Not Found")
@@ -37,7 +38,7 @@ def read_csv(filepath):
 	return data
 
 
-def get_correlated(tora,prin,perasmena_prin):
+def get_correlated(tora,prin,perasmena_prin,delimiter="~"):
 	
 	perasmena = []
 	failed_to_corelate = []
@@ -45,6 +46,7 @@ def get_correlated(tora,prin,perasmena_prin):
 	
 	for s in perasmena_prin:
 		subject = perasmena_prin[s]
+		print(subject)
 		
 		if int(subject["Passed"]) == 1:
 			if s in prin:
@@ -98,11 +100,14 @@ def get_stats(perasmena):
 	for subject in perasmena:
 		for stat in subject["new"]["EM"].split(","):
 			stat = stat.strip().replace("\n","")
+			if stat == "ΕΥ" and subject["new"]["RID"].strip().replace("\n","RID") == "":
+				stat = "GP"
+				
 			if stat in data:
 				data[stat] += 1
 			else:
 				data[stat] = 1
-	syms = ["Υ","ΒΡ","ΕΥ"]
+	syms = ["Υ","ΒΡ","ΕΥ","GP"]
 	for s in syms:
 		if not s in data:
 			data[s] = 0
@@ -110,6 +115,10 @@ def get_stats(perasmena):
 
 def get_needed_stats(needed,stats,perasmena):
 	global needed_y
+	global needed_eu
+	global needed_eu_r
+	global needed_br
+	global ptixiaki
 	
 	data ={}
 	
@@ -118,25 +127,32 @@ def get_needed_stats(needed,stats,perasmena):
 	roes_ids = ["1","2","3"]
 	
 	roes_vasika = {
-		"1":4,
-		"2":4,
-		"3":4
+		"1":needed_br,
+		"2":needed_br,
+		"3":needed_br 
 	}
 	
 	roes_epilogi = {
-		"1":5,
-		"2":5,
-		"3":5,
+		"1":needed_eu_r,
+		"2":needed_eu_r,
+		"3":needed_eu_r,
 	}
+	
+	if ptixiaki:
+		xx_needed_eu = needed_eu - 1
+	else:
+		xx_needed_eu = needed_eu
 	
 	eleutheri_epilogi = {
-		"1":7,
-		"2":7,
-		"3":7
+		"1":xx_needed_eu,
+		"2":xx_needed_eu,
+		"3":xx_needed_eu
 	}
 	
+	genikis_paidias = 0
+	
 	for subject in perasmena:
-		print(subject["new"]["Subject"])
+		
 		for stat in subject["new"]["EM"].split(","):
 			stat = stat.strip().replace("\n","")
 			
@@ -161,10 +177,19 @@ def get_needed_stats(needed,stats,perasmena):
 							eleutheri_epilogi[rrid] -=1
 						else:
 							roes_epilogi[rid] -= 1
-						continue
-							
 						
-					eleutheri_epilogi[rrid] -=1
+					else:							
+						if rid == "": #Gemikis Paidias
+							if genikis_paidias < 2:
+								eleutheri_epilogi[rrid] -=1
+								
+						else: #Vasiko Rois
+							eleutheri_epilogi[rrid] -=1
+						
+				if rid == "":
+					genikis_paidias += 1
+					
+				
 					
 				
 	
@@ -263,6 +288,46 @@ def main():
 	}
 	
 	return results
+
+def app_results(perasmena_prin):
+	tora = read_csv("mathimata.csv")
+	prin = read_csv("mathimata_pada.csv")
+	
+	
+	
+	if tora == None or prin == None or perasmena_prin == None:
+		return None
+	
+	new_data = get_correlated(tora,prin,perasmena_prin)
+	stats = get_stats(new_data[0])
+
+	#Printing Data!
+	'''
+	print_perasmena(new_data[0])
+	print("----------------------------------------")
+	print_failed_to_corelate(new_data[1],prin)
+	print("----------------------------------------")
+	print_stats(stats)
+	
+	'''
+	needed = get_needed(new_data[0],tora,new_data[2])
+	needed_stats = get_needed_stats(needed,stats,new_data[0])
+	
+	results  = {
+		"mathimata_pada":tora,
+		"proigoumena_mathimata":prin,
+		"perasmena_mathimata_pro_antistixisis":perasmena_prin,
+		"perasmena_mathimata_meta_antistixisis":new_data[0],
+		"mathimata_pou_den_antistixizontai":new_data[1],
+		"perasmena_mathimata_ids":new_data[2],
+		"statistika":stats,
+		"mathimata_pou_xriazomaste":needed,
+		"statistika_gia_oti_xiazomaste":needed_stats,
+	}
+	
+	return results
+
+	
 
 if __name__ == "__main__":
 	print("Starting")

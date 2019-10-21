@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block b %}
+	<script type="text/javascript" src="/static/js/index.js"></script>
+  <div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<h3>Οδηγίες</h3>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			<p>Επιλέξτε ποια μαθήματα (παδα) έχετε περάσει και πατήστε επόμενο. Η κατεβάστε το αρχείο, ανοίξτε το και στην στήλη passed γράφετε τον αριθμό 1 αν έχετε περάσει το μάθημα. Το ανεβάζεται και πατάτε επόμενο!</p>
+			<p><a href="/static/maths.csv">Αρχείο!</a></p>
+			<p>Μην πειράξετε τις άλλες στήλες... Δεν ξέρω τη θα γίνει! :p</p>
+		</div>
+	</div>
+	<ul class="nav nav-tabs">
+	  <li class="tab_button active"><a data-toggle="tab" href="#subjects">Μαθήματα</a></li>
+	  <li class="tab_button" ><a data-toggle="tab" href="#file">Αρχείο</a></li>
+	</ul>
+
+	<div class="tab-content">
+	  <div id="subjects" class="tab-pane fade in active">
+		<h3>Μαθήματα</h3>
+		<form method="post" action="/results"  id="sub_form"></form>
+		<table>
+			<thead>
+				<tr>
+					<td>Μάθημα</td>
+					<td>Περασμένο?</td>
+				</tr>
+			</thead>
+			<tbody>
+			{% for s in subjects %}
+				<tr class="subject_tr">
+					<td id="s-{{subjects[s]['ID']}}">{{subjects[s]["Subject"]}}</td>
+					<td><input form="sub_form" id="c-{{subjects[s]['ID']}}" type="checkbox" name="{{subjects[s]['ID']}}" class="subject-checkbox" /></td>
+				</tr>
+				
+			
+			{% endfor %}
+			</tbody>
+		</table>
+		<div class="subject-form-options">
+			<a href="#" id="check-all">Check All</a>
+			<a href="#" id="uncheck-all">Uncheck All</a>
+			<input form="sub_form" type="submit" value="Αποτελέσματα" class="btn btn-success">
+		</div>
+		
+		
+	  </div>
+	  <div id="file" class="tab-pane fade">
+		<h3>Αρχείο</h3>
+		<form action="/results" method="post" enctype="multipart/form-data">
+			Επέλετε το τροποποιημένο Αρχείο
+			<input type="file" name="mathimata" id="fileToUpload">
+			<input type="submit" value="Αποτελέσματα">
+		</form>
+
+	  </div>
+	  
+	</div>
+  </div>
+{% endblock %}
