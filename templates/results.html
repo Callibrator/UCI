@@ -1,0 +1,222 @@
+<h1>Ti Exoume Perasi</h3>
+
+<h2>Statistika - Perasmena</h2>
+<table>
+	<tbody>
+		<tr>
+			<td>Upoxreotika</td>
+			<td>{{data["statistika"]["Υ"]}}</td>
+		</tr>
+		<tr>
+			<td>Vasika Rois</td>
+			<td>{{data["statistika"]["ΒΡ"]}}</td>
+		</tr>
+		<tr>
+			<td>Epilogis Upoxreotika</td>
+			<td>{{data["statistika"]["ΕΥ"]}}</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h2>Statistika - Xriazomaste</h2>
+<table>
+	<tbody>
+		<tr>
+			<td>Upoxreotika</td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["Υ"]}}</td>
+		</tr>
+		<tr>
+			<td>Vasika Rois</td>
+			<td><b>Roi 1</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["1"]}}</td>
+			<td><b>Roi 2</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["2"]}}</td>
+			<td><b>Roi 3</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["3"]}}</td>
+		</tr>
+		<tr>
+			<td>Epilogi Mathimatos Rois</td>
+			<td><b>Roi 1</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["1"]}}</td>
+			<td><b>Roi 2</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["2"]}}</td>
+			<td><b>Roi 3</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["3"]}}</td>
+		</tr>
+		<tr>
+			<td>Eleutheri Epilogi</td>
+			<td><b>Roi 1</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["1"]}}</td>
+			<td><b>Roi 2</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["2"]}}</td>
+			<td><b>Roi 3</b></td>
+			<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["3"]}}</td>
+		</tr>
+
+	</tbody>
+</table>
+
+<h2>Pinakas Antistixisis Gia Perasmena Mathimata</h2>
+<table>
+	<thead>
+		<tr>
+			<td>Palio</td>
+			<td>Kenourgio</td>
+			<td>EM</td>
+		</tr>
+	</thead>
+{% for s in data["perasmena_mathimata_meta_antistixisis"] %}
+	<tr>
+		<td>{{s["Subject"]}}</td>
+		<td>{{s["new"]["Subject"]}}</td>
+		<td>{{s["new"]["EM"]}}</td>
+	</tr>
+
+{% endfor %}
+
+</table>
+
+<h2>Mathimata Pou Den kataferan na antistixi8oun</h2>
+<table>
+	<thead>
+		<tr>
+			<td>Mathima</td>
+		</tr>
+	</thead>
+{% for s in data["mathimata_pou_den_antistixizontai"] %}
+	<tr>
+		<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+	</tr>
+
+{% endfor %}
+
+</table>	
+
+<h1>Ti Xriazomaste Gia Ptixio</h3>
+<h3>Theloume Ta Parakatw Oposdipote</h3>
+
+<table>
+	<thead>
+		<tr>
+			<td>Mathima</td>
+			<td>Eksamino</td>
+		</tr>
+	</thead>
+{% for s in data["mathimata_pou_xriazomaste"]["theloume_sigoura"] %}
+	<tr>
+		<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+		<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+	</tr>
+
+{% endfor %}
+	<tr>
+		<td>Sinolo</td>
+		<td>{{data["statistika_gia_oti_xiazomaste"]["Υ"]}}</td>
+	</tr>
+</table>
+
+
+<h2>Exoume Tris Epiloges, roi 1 - logismikou roi-2 ulikou kai roi-3 dixtia... Epilekste Ena Apo ta parakatw</h2>
+{% for rid in ["1","2","3"] %}
+	<h3>Roi {{rid}}</h3>
+
+	<h4>Ta parakatw Oposdipote</h3>
+
+
+	<table>
+		<thead>
+			<tr>
+				<td>Mathima</td>
+				<td>Roi</td>
+				<td>Eksamino</td>
+			</tr>
+		</thead>
+	{% for s in data["mathimata_pou_xriazomaste"]["roes"][rid] %}
+		<tr>
+			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+		</tr>
+
+	{% endfor %}
+		
+
+	</table>
+
+	<h4>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"][rid]}} apo ta parakatw</h3>
+
+	<table>
+		<thead>
+			<tr>
+				<td>Mathima</td>
+				<td>Roi</td>
+				<td>Eksamino (protinomeno)</td>
+			</tr>
+		</thead>
+	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"][rid] %}
+		<tr>
+			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+			
+			
+		</tr>
+
+	{% endfor %}
+
+	</table>
+
+
+	<h4>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"][rid]}} apo ta parakatw</h3>
+
+	<table>
+		<thead>
+			<tr>
+				<td>Mathima</td>
+				<td>Roi</td>
+				<td>Eksamino (protinomeno)</td>
+			</tr>
+		</thead>
+	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["1"] %}
+		<tr>
+			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+		</tr>
+
+	{% endfor %}
+
+	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["2"] %}
+		<tr>
+			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+		</tr>
+
+	{% endfor %}
+
+	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["3"] %}
+		<tr>
+			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+		</tr>
+
+	{% endfor %}
+	
+	{% for s in data["mathimata_pou_xriazomaste"]["genikis_pedias"] %}
+		<tr>
+			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+			<td>Genikis Paidias</td>
+			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+		</tr>
+
+	{% endfor %}
+
+	</table>
+
+	<h4> Prosoxi!!! An ena mathima anikei se 2 listes kai to perasete metraei gia 1!!!</h4>
+	<h4> Prosoxi!!! Mporeite na dilosete mono 2 mathimata genikis paidias!!!!</h4>
+{% endfor %}
+
