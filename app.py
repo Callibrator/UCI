@@ -36,13 +36,18 @@ def results():
 				
 				if fl.filename == "":
 					error = True
-					p
+
 				elif fl and allowed_file(fl.filename):
 					filename = UPLOAD_FOLDER + str(uuid.uuid4())
+
+					if not os.path.isdir(UPLOAD_FOLDER):
+						os.mkdir(UPLOAD_FOLDER)
+
 					fl.save(filename)
 					
 					file_data = read_csv(filename,",")
-					print(file_data)
+
+					os.remove(filename)
 					
 					for s in file_data:
 						if "Passed" in file_data[s]:

@@ -1,3 +1,23 @@
+h2{
+	padding: 5px;
+}
+
+
+.warning{
+	border: 1px solid red;
+	font-weight: bold;
+	margin: 10px;
+	padding: 5px;
+
+}
+
+.note{
+	padding: 10px;
+	margin: 10px;
+	border: 1px solid gray;
+
+}
+
 .header{
 	padding: 20px;
 
@@ -19,5 +39,20 @@
 .subject-form-options{
 	display:flex;
 	justify-content:space-between;
-	
+
+}
+.main_table{
+	width: 100%;
+}
+.main_table td{
+	padding: 5px;
+
+
+}
+.main_table tr{
+	border-bottom: 1px solid black;
+}
+.main_table tr:hover{
+	background-color: #2ceeea3d;
+
 }

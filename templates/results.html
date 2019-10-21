@@ -1,230 +1,309 @@
 {% extends "layout.html" %}
 {% block b %}
-<h1>Ti Exoume Perasi</h3>
 
-<h2>Statistika - Perasmena</h2>
-<table>
-	<tbody>
-		<tr>
-			<td>Upoxreotika</td>
-			<td>{{data["statistika"]["Υ"]}}</td>
-		</tr>
-		<tr>
-			<td>Vasika Rois</td>
-			<td>{{data["statistika"]["ΒΡ"]}}</td>
-		</tr>
-		<tr>
-			<td>Epilogis Upoxreotika</td>
-			<td>{{data["statistika"]["ΕΥ"]}}</td>
-		</tr>
-		
-		<tr>
-			<td>Genikis Paidias (mexri 2 mporoun na metrisoun gia ptixio)</td>
-			<td>{{data["statistika"]["GP"]}}</td>
-		</tr>
+<div class="container">
 
-	</tbody>
-</table>
+	<div class="row">
+		<div class="col-sm-6">
+			<h2>Περασμένα Μαθήματα</h2>
+			<table class="main_table">
+				<tbody>
+					<tr>
+						<td>Υποχρεωτικά</td>
+						<td>{{data["statistika"]["Υ"]}}</td>
+					</tr>
+					<tr>
+						<td>Βασικά Ροής</td>
+						<td>{{data["statistika"]["ΒΡ"]}}</td>
+					</tr>
+					<tr>
+						<td>Επιλογής Υποχρεωτικά</td>
+						<td>{{data["statistika"]["ΕΥ"]}}</td>
+					</tr>
 
-<h2>Statistika - Xriazomaste</h2>
-<table>
-	<tbody>
-		<tr>
-			<td>Upoxreotika</td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["Υ"]}}</td>
-		</tr>
-		<tr>
-			<td>Vasika Rois</td>
-			<td><b>Roi 1</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["1"]}}</td>
-			<td><b>Roi 2</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["2"]}}</td>
-			<td><b>Roi 3</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["3"]}}</td>
-		</tr>
-		<tr>
-			<td>Epilogi Mathimatos Rois</td>
-			<td><b>Roi 1</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["1"]}}</td>
-			<td><b>Roi 2</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["2"]}}</td>
-			<td><b>Roi 3</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["3"]}}</td>
-		</tr>
-		<tr>
-			<td>Eleutheri Epilogi</td>
-			<td><b>Roi 1</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["1"]}}</td>
-			<td><b>Roi 2</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["2"]}}</td>
-			<td><b>Roi 3</b></td>
-			<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["3"]}}</td>
-		</tr>
+					<tr>
+						<td>Γενικλής Παιδίας (Μετράνε Μέχρι 2 Για πτύχιο, τα υπόλοιπα Αγνοούνται)</td>
+						<td>{{data["statistika"]["GP"]}}</td>
+					</tr>
 
-	</tbody>
-</table>
+				</tbody>
+			</table>
+		</div>
+		<div class="col-sm-6">
+			<h2>Χρειαζόμαστε Ακόμα</h2>
+			<table class="main_table">
+				<tbody>
+					<tr>
+						<td>Υποχρεωτικά</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["Υ"]}}</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td><b>Ροή 1</b></td>
+						<td><b>Ροή 2</b></td>
+						<td><b>Ροή 3</b></td>
+					</tr>
+					<tr>
+						<td>Βασικά Ροής</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["1"]}}</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["2"]}}</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["roes_vasika"]["3"]}}</td>
+					</tr>
+					<tr>
+						<td>Επιλογή Μαθήματος Ίδιας Ροής</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["1"]}}</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["2"]}}</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"]["3"]}}</td>
+					</tr>
+					<tr>
+						<td>Ελεύθερη Επιλογή</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["1"]}}</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["2"]}}</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"]["3"]}}</td>
+					</tr>
 
-<h2>Pinakas Antistixisis Gia Perasmena Mathimata</h2>
-<table>
-	<thead>
-		<tr>
-			<td>Palio</td>
-			<td>Kenourgio</td>
-			<td>EM</td>
-		</tr>
-	</thead>
-{% for s in data["perasmena_mathimata_meta_antistixisis"] %}
-	<tr>
-		<td>{{s["Subject"]}}</td>
-		<td>{{s["new"]["Subject"]}}</td>
-		<td>{{s["new"]["EM"]}}</td>
-	</tr>
-
-{% endfor %}
-
-</table>
-
-<h2>Mathimata Pou Den kataferan na antistixi8oun</h2>
-<table>
-	<thead>
-		<tr>
-			<td>Mathima</td>
-		</tr>
-	</thead>
-{% for s in data["mathimata_pou_den_antistixizontai"] %}
-	<tr>
-		<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-	</tr>
-
-{% endfor %}
-
-</table>	
-
-<h1>Ti Xriazomaste Gia Ptixio</h3>
-<h3>Theloume Ta Parakatw Oposdipote</h3>
-
-<table>
-	<thead>
-		<tr>
-			<td>Mathima</td>
-			<td>Eksamino</td>
-		</tr>
-	</thead>
-{% for s in data["mathimata_pou_xriazomaste"]["theloume_sigoura"] %}
-	<tr>
-		<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-		<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-	</tr>
-
-{% endfor %}
-	<tr>
-		<td>Sinolo</td>
-		<td>{{data["statistika_gia_oti_xiazomaste"]["Υ"]}}</td>
-	</tr>
-</table>
+				</tbody>
+			</table>
+		</div>
+	</div>
 
 
-<h2>Exoume Tris Epiloges, roi 1 - logismikou roi-2 ulikou kai roi-3 dixtia... Epilekste Ena Apo ta parakatw</h2>
-{% for rid in ["1","2","3"] %}
-	<h3>Roi {{rid}}</h3>
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Πίνακας Αντιστοιχήσεις Περασμένων Μαθημάτων</h2>
+			<table class="main_table">
+				<thead>
+					<tr>
+						<td>Παλιό Μάθημα</td>
+						<td>Καινούργιο Μάθημα</td>
+						<td>Είδος Μαθήματος</td>
+					</tr>
+				</thead>
+			{% for s in data["perasmena_mathimata_meta_antistixisis"] %}
+				<tr>
+					<td>{{s["Subject"]}}</td>
+					<td>{{s["new"]["Subject"]}}</td>
+					<td>{{s["new"]["EM"]}}</td>
+				</tr>
 
-	<h4>Ta parakatw Oposdipote</h3>
+			{% endfor %}
+
+			</table>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h2>Μαθήματα Που Δεν Κατάφεραν Να Αντιστοιχίθουν</h2>
+			<table class="main_table">
+				<thead>
+					<tr>
+						<td>Μάθημα</td>
+					</tr>
+				</thead>
+			{% for s in data["mathimata_pou_den_antistixizontai"] %}
+				<tr>
+					<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+				</tr>
+
+			{% endfor %}
+
+			</table>
+			<br />
+
+			<p class="warning">Αν έχετε Περάσει ΠΠΣ (Προγραμματισμό Πυρήνα Συστημάτων) & ΛΣ1 (Λειτουργικά Συστήματα 1) ψαχτείτε λίγο γιατί δεν ξέρω τη γίνεται!</p>
+			<p class="warning">Η λίστα αντιστοιχήσεις που έχουμε αυτήν την στιγμή ΔΕΝ είναι Η επίσημη. Περιμένω (όπως όλοι μας) την επίσημη λίστα, Μόλις την πάρω θα την ανεβάσω στην εφαρμογή για να έχουμε τα ακριβή αποτελέσματα. Όποτε μην πανικοβάλλεστε αν υπάρχουν μαθήματα που δεν αντιστοιχίστηκαν, είναι γιατί έχω βάλει να αντηστηχιθούν μαθήματα με το ίδιο όνομα μόνο! </p>
+
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
+			<center><h1>Χρειάζεσαι ακόμα τα παρακάτω</h3></center>
+		</div>
+
+	</div>
+
+	<div class="row">
+		<div class="col-sm-12">
 
 
-	<table>
-		<thead>
-			<tr>
-				<td>Mathima</td>
-				<td>Roi</td>
-				<td>Eksamino</td>
-			</tr>
-		</thead>
-	{% for s in data["mathimata_pou_xriazomaste"]["roes"][rid] %}
-		<tr>
-			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-		</tr>
+				<p class="note">Τα παρακάτω είναι υποχρεωτικά και πρέπει να τα περάσετε όσα και μαθήματα και αν έχετε περάσει (ακόμα και αν είναι πάνω από 55 αυτά που έχετε περάσει)</p>
 
-	{% endfor %}
-		
+				<table class="main_table">
+					<thead>
+						<tr>
+							<td>Μάθημα</td>
+							<td>Εξάμηνο</td>
+						</tr>
+					</thead>
+				{% for s in data["mathimata_pou_xriazomaste"]["theloume_sigoura"] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+					</tr>
 
-	</table>
+				{% endfor %}
+					<tr>
+						<td>Σύνολο</td>
+						<td>{{data["statistika_gia_oti_xiazomaste"]["Υ"]}}</td>
+					</tr>
+				</table>
+		</div>
 
-	<h4>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"][rid]}} apo ta parakatw</h3>
+	</div>
 
-	<table>
-		<thead>
-			<tr>
-				<td>Mathima</td>
-				<td>Roi</td>
-				<td>Eksamino (protinomeno)</td>
-			</tr>
-		</thead>
-	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"][rid] %}
-		<tr>
-			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-			
-			
-		</tr>
+	<div class="row">
+		<div class="col-sm-12">
+			<p class="note">Υπάρχουν τρις ροές. Πρέπει να έχετε ολοκλήρωση τουλάχιστον την μία για να πάρετε δίπλωμα. Δεν χρειάζεται να δηλώσετε κάτι, απλά παίρνεται τα κατάλληλα μαθήματα! </p>
+			<p class="note">Όπως παρατηρείτε, οι επιλογές αλλάζουν ελάχιστα ανάλογα με την ροή που θα επιλέξετε</p>
+			<h5>Επιλέξτε Μια Ροή</h5>
+		</div>
+	</div>
 
-	{% endfor %}
+	<ul class="nav nav-tabs">
+	  <li class="active tab_button"><a data-toggle="tab" href="#r1">1-Λογισμικό</a></li>
+	  <li class="tab_button"><a data-toggle="tab" href="#r2">2-Υλικό</a></li>
+	  <li class="tab_button"><a data-toggle="tab" href="#r3">3-Δίκτυά</a></li>
+	</ul>
 
-	</table>
+	<div class="tab-content">
+		{% for rid in ["1","2","3"] %}
+			<div id="r{{rid}}" class="tab-pane fade in">
+				<h3>Ροή {{rid}}</h3>
+
+				<center><h4>Τα παρακάτω οπωσδήποτε</h3></center>
+				<p class="note">Aκόμα και αν έχετε ή αν θα έχετε πάνω από 55 μαθήματα συνολικά</p>
+
+				<table class="main_table">
+					<thead>
+						<tr>
+							<td>Μάθημα</td>
+							<td>Ροή</td>
+							<td>Εξάμηνο</td>
+						</tr>
+					</thead>
+				{% for s in data["mathimata_pou_xriazomaste"]["roes"][rid] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+					</tr>
+
+				{% endfor %}
 
 
-	<h4>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"][rid]}} apo ta parakatw</h3>
+				</table>
 
-	<table>
-		<thead>
-			<tr>
-				<td>Mathima</td>
-				<td>Roi</td>
-				<td>Eksamino (protinomeno)</td>
-			</tr>
-		</thead>
-	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["1"] %}
-		<tr>
-			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-		</tr>
+				<center><h4>{{data["statistika_gia_oti_xiazomaste"]["roes_epilogi"][rid]}} Από τα παρακάτω</h3></center>
 
-	{% endfor %}
+				<p class="note">Aκόμα και αν έχετε ή αν θα έχετε πάνω από 55 μαθήματα συνολικά</p>
+				<table class="main_table">
+					<thead>
+						<tr>
+							<td>Μάθημα</td>
+							<td>Ροή</td>
+							<td>Προτεινόμενο Εξάμηνο</td>
+						</tr>
+					</thead>
+				{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"][rid] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
 
-	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["2"] %}
-		<tr>
-			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-		</tr>
 
-	{% endfor %}
+					</tr>
 
-	{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["3"] %}
-		<tr>
-			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
-			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-		</tr>
+				{% endfor %}
 
-	{% endfor %}
-	
-	{% for s in data["mathimata_pou_xriazomaste"]["genikis_pedias"] %}
-		<tr>
-			<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
-			<td>Genikis Paidias</td>
-			<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
-		</tr>
+				</table>
 
-	{% endfor %}
 
-	</table>
+				<center><h4>{{data["statistika_gia_oti_xiazomaste"]["eleutheri_epilogi"][rid]}} Από τα παρακάτω</h3></center>
 
-	<h4> Prosoxi!!! An ena mathima anikei se 2 listes kai to perasete metraei gia 1!!!</h4>
-	<h4> Prosoxi!!! Mporeite na dilosete mono 2 mathimata genikis paidias sinolika (menoun: {{2 - data["statistika"]["GP"]}} )!!!!</h4>
-{% endfor %}
+				<table class="main_table">
+					<thead>
+						<tr>
+							<td>Μάθημα</td>
+							<td>Τμήμα</td>
+							<td>Ροή</td>
+							<td>Προτεινόμενο Εξάμηνο</td>
+						</tr>
+					</thead>
+				{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["1"] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>-</td>
+						<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+					</tr>
 
+				{% endfor %}
+
+				{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["2"] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>-</td>
+						<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+					</tr>
+
+				{% endfor %}
+
+				{% for s in data["mathimata_pou_xriazomaste"]["epilogis_upoxreotika"]["3"] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>-</td>
+						<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+					</tr>
+
+				{% endfor %}
+				
+				{% for rrid in ["1","2","3"] %}
+					{% if rrid != rid %}
+						{% for s in data["mathimata_pou_xriazomaste"]["roes"][rrid] %}
+							<tr>
+								<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+								<td>-</td>
+								<td>{{data["mathimata_pada"][s]["Roi"]}}</td>
+								<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+
+
+							</tr>
+
+
+						{% endfor %}
+					{% endif %}
+				{% endfor %}
+
+				{% for s in data["mathimata_pou_xriazomaste"]["genikis_pedias"] %}
+					<tr>
+						<td>{{data["mathimata_pada"][s]["Subject"]}}</td>
+						<td>{{data["mathimata_pada"][s]["Tmima"]}}</td>
+						<td>Γενικής παιδείας </td>
+						<td>{{data["mathimata_pada"][s]["Semester"]}}</td>
+					</tr>
+
+				{% endfor %}
+
+
+
+				</table>
+
+				<p class="warning">Προσοχή, αν ένα μάθημα είναι σε δύο λίστες και το πάρετε μετράει για 1 μάθημα!!!</p>
+				<p class="warning">Προσοχή, Μέχρι 2 μαθήματα γενικής παιδείας θα μετρήσουν για δίπλωμα, άσχετα με το πόσα έχετε δηλώσει/περάσει (Μπορείς να πάρεις ακόμα: {{2 - data["statistika"]["GP"]}} )!!!!</p>
+				</div>
+			{% endfor %}
+		</div>
+
+
+	</div>
+
+
+
+
+</div>
 {% endblock %}
