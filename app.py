@@ -22,8 +22,9 @@ def results():
 			
 			
 			for s in perasmena:
-				if s in request.form:
-					if request.form[s].lower() == "on":
+				
+				if "c-"+s in request.form:
+					if request.form["c-"+s].lower() == "on":
 						perasmena[s]["Passed"] = "1"
 					else:
 						perasmena[s]["Passed"] = "0"

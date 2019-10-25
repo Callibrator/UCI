@@ -46,7 +46,7 @@ def get_correlated(tora,prin,perasmena_prin,delimiter="~"):
 	
 	for s in perasmena_prin:
 		subject = perasmena_prin[s]
-		print(subject)
+		
 		
 		if int(subject["Passed"]) == 1:
 			if s in prin:
