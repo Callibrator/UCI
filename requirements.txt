@@ -48,7 +48,7 @@ seaborn==0.9.0
 selenium==3.14.1
 serial==0.0.64
 six==1.11.0
-urllib3==1.23
+urllib3==1.26.5
 websockets==4.0.1
 Werkzeug==0.14.1
 WTForms==2.2.1
