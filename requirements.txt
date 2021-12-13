@@ -21,7 +21,7 @@ itsdangerous==0.24
 jdcal==1.4
 Jinja2==2.10
 kiwisolver==1.0.1
-lxml==4.2.5
+lxml==4.6.5
 MarkupSafe==1.0
 matplotlib==2.2.3
 more-itertools==4.3.0
